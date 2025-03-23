@@ -56,7 +56,7 @@ setTimeout(function () {
 //------------------------------------------------------------------------------
 
 document.addEventListener("DOMContentLoaded", function () {
-  const allButtons = document.querySelectorAll(".index-button, .AboutMe-button, .Works-button");
+  const allButtons = document.querySelectorAll(".AboutMe-button, .Works-button");
 
   if (allButtons.length > 0) {
     allButtons.forEach(button => {
