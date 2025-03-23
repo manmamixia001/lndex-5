@@ -56,28 +56,28 @@ setTimeout(function () {
 //------------------------------------------------------------------------------
 
 document.addEventListener("DOMContentLoaded", function () {
-    const aboutMeButtons = document.querySelectorAll(".AboutMe-button");
-  
-    if (aboutMeButtons.length > 0) {
-      aboutMeButtons.forEach(button => {
-        button.addEventListener("click", function (event) {
-          event.preventDefault(); // デフォルトのリンク動作を無効化
-  
-          // フェードアウト処理
-          const elementsToFadeOut = document.querySelectorAll("body > *:not(header)");
-          elementsToFadeOut.forEach(element => {
-            element.style.transition = "opacity 1s";
-            element.style.opacity = "0";
-          });
-  
-          // 2秒後にリンク移動
-          setTimeout(() => {
-            window.location.href = "/about-me";
-          }, 1000);
+  const allButtons = document.querySelectorAll(".index-button, .AboutMe-button, .Works-button");
+
+  if (allButtons.length > 0) {
+    allButtons.forEach(button => {
+      button.addEventListener("click", function (event) {
+        event.preventDefault(); // ✅ すべてのリンク遷移を一時停止
+
+        // フェードアウト処理
+        const elementsToFadeOut = document.querySelectorAll("body > *:not(header)");
+        elementsToFadeOut.forEach(element => {
+          element.style.transition = "opacity 1s";
+          element.style.opacity = "0";
         });
+
+        // 1秒後にリンク先に遷移
+        setTimeout(() => {
+          window.location.href = this.href; // ✅ 外部リンク・内部リンクどちらもOK
+        }, 1000);
       });
-    }
-  });
+    });
+  }
+});
 
   document.addEventListener("DOMContentLoaded", function () {
     const aboutMeButtons = document.querySelectorAll(".Works-button");
